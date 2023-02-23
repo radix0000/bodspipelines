@@ -9,7 +9,7 @@ def create_client():
     port = os.getenv('ELASTICSEARCH_PORT')
     password = os.getenv('ELASTICSEARCH_PASSWORD')
     if password:
-        return Elasticsearch(f"{protocol}://{host}:{port}"), basic_auth=('elastic', password))
+        return Elasticsearch(f"{protocol}://{host}:{port}", basic_auth=('elastic', password))
     else:
         return Elasticsearch(f"{protocol}://{host}:{port}") #, basic_auth=('elastic', password))
 
