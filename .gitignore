@@ -1,0 +1,10 @@
+*.egg-info
+*.pyc
+*.swp
+*.mo
+.vscode
+.cache
+.coverage
+.coverage.*
+.ve
+__pycache__

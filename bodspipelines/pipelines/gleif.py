@@ -37,7 +37,7 @@ output_new = NewOutput(name="", storage=ElasticStorage(indexes={"lei2": , "rr": 
                                     output=output_console)) # KinesisOutput(stream_name="gleif_injest_stream"))
 
 # Definition of GLEIF data pipeline injest stage
-injest_stage = Stage(name="injest",
+injest_stage = Stage(name="ingest",
               sources=[repex_source], #[lei2_source, rr_source, repex_source],
               processors=[],
               outputs=[output_new]
