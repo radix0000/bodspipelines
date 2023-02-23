@@ -34,7 +34,7 @@ repex_source = Source(name="repex",
 output_console = Output(name="console", target=OutputConsole(name="gleif-injest"))
 
 output_new = NewOutput(name="", storage=ElasticStorage(indexes={"lei2": None, "rr": None, "repex": None}), 
-                                    output=output_console)) # KinesisOutput(stream_name="gleif_injest_stream"))
+                                    output=output_console) # KinesisOutput(stream_name="gleif_injest_stream"))
 
 # Definition of GLEIF data pipeline injest stage
 injest_stage = Stage(name="ingest",
