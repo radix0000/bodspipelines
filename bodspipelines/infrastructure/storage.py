@@ -3,7 +3,6 @@ from dataclasses import dataclass
 
 from bodspipelines.infrastructure.clients.elasticsearch_client import ElasticsearchClient
 
-@dataclass
 class ElasticStorage:
     """Elasticsearch storage definition class"""
     #name: str
@@ -11,17 +10,21 @@ class ElasticStorage:
     #host: str
     #port: str
     #password: str
-    indexes: dict
-    storage: Optional[ElasticsearchClient] = None
-    current_index: str = None
+    #indexes: dict
+    #storage: Optional[ElasticsearchClient] = None
+    #current_index: str = None
+    def __init__(self, indexes):
+        self.indexes = indexes
+        self.storage = ElasticsearchClient()
+        self.current_index = None
 
     def setup_indexes(self):
         for index_name in self.indexes:
             self.storage.create_index(index_name, self.indexes[index_name])
 
-    def __post_init__(self):
-        self.storage = ElasticsearchClient()
-        self.setup_indexes()
+    #def __post_init__(self):
+    #    self.storage = ElasticsearchClient()
+    #    self.setup_indexes()
 
     def set_index(self, index_name):
         self.storage.set_index(index_name)
