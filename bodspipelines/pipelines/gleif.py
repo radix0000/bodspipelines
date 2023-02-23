@@ -1,4 +1,5 @@
 from bodspipelines.infrastructure.pipeline import Source, Stage, Pipeline
+from from bodspipelines.infrastructure.storage import ElasticStorage
 from bodspipelines.infrastructure.outputs import Output, OutputConsole, NewOutput, KinesisOutput
 from bodspipelines.infrastructure.processing.bulk_data import BulkData
 from bodspipelines.infrastructure.processing.xml_data import XMLData
