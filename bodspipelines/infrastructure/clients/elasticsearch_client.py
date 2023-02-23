@@ -1,9 +1,13 @@
+import os
 import json
 from elasticsearch import Elasticsearch
 
-def create_client(protocol, host, port, password):
+def create_client():
     """Create Elasticsearch client"""
-    return Elasticsearch(f"{protocol}://{host}:{port}", basic_auth=('elastic', password))
+    protocol = os.getenv('ELASTICSEARCH_PROTOCOL')
+    host = os.getenv('ELASTICSEARCH_HOST')
+    port = os.getenv('ELASTICSEARCH_PORT')
+    return Elasticsearch(f"{protocol}://{host}:{port}") #, basic_auth=('elastic', password))
 
 def index_definition(record, out):
     """Create index definition from record"""
@@ -17,8 +21,8 @@ def index_definition(record, out):
 
 class ElasticsearchClient:
     """ElasticsearchClient class"""
-    def __init__(self, protocol, host, port, password):
-        self.client = create_client(protocol, host, port, password)
+    def __init__(self):
+        self.client = create_client()
         self.index_name = None
         #self.index_count = 0
 

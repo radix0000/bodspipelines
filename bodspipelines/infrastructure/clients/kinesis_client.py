@@ -23,7 +23,7 @@ def unpack_records(record_response):
 class KinesisStream:
     """Kinesis Stream class"""
     def __init__(self, stream_name, shard_count):
-        self.client = create_client('kinesis','eu-west-1')
+        self.client = create_client('kinesis')
         self.stream_name = stream_name
         self.shard_id = shard_id(self.client, self.stream_name)
         self.shard_count = shard_count

@@ -7,10 +7,10 @@ from bodspipelines.infrastructure.clients.elasticsearch_client import Elasticsea
 class ElasticStorage:
     """Elasticsearch storage definition class"""
     #name: str
-    protocol: str
-    host: str
-    port: str
-    password: str
+    #protocol: str
+    #host: str
+    #port: str
+    #password: str
     indexes: dict
     storage: Optional[ElasticsearchClient] = None
     current_index: str = None
@@ -20,10 +20,7 @@ class ElasticStorage:
             self.storage.create_index(index_name, self.indexes[index_name])
 
     def __post_init__(self):
-        self.storage = ElasticsearchClient(self.protocol,
-                                           self.host,
-                                           self.port,
-                                           self.password)
+        self.storage = ElasticsearchClient()
         self.setup_indexes()
 
     def set_index(self, index_name):

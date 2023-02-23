@@ -1,4 +1,5 @@
-from bodspipelines.infrastructure.pipeline import Source, Output, OutputConsole, Stage, Pipeline
+from bodspipelines.infrastructure.pipeline import Source, Stage, Pipeline
+from bodspipelines.infrastructure.outputs import Output, OutputConsole, NewOutput, KinesisOuput
 from bodspipelines.infrastructure.processing.bulk_data import BulkData
 from bodspipelines.infrastructure.processing.xml_data import XMLData
 from bodspipelines.transforms.gleif import Gleif2Bods
@@ -32,11 +33,14 @@ repex_source = Source(name="repex",
 
 output_console = Output(name="console", target=OutputConsole(name="gleif-injest"))
 
+output_new = NewOutput(name="", storage=ElasticStorage(indexes={"lei2": , "rr": , "repex": }), 
+                                    output=output_console)) # KinesisOutput(stream_name="gleif_injest_stream"))
+
 # Definition of GLEIF data pipeline injest stage
 injest_stage = Stage(name="injest",
               sources=[repex_source], #[lei2_source, rr_source, repex_source],
               processors=[],
-              outputs=[output_console]
+              outputs=[output_new]
 )
 
 # Definition of GLEIF data pipeline transform stage
