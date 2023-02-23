@@ -7,7 +7,11 @@ def create_client():
     protocol = os.getenv('ELASTICSEARCH_PROTOCOL')
     host = os.getenv('ELASTICSEARCH_HOST')
     port = os.getenv('ELASTICSEARCH_PORT')
-    return Elasticsearch(f"{protocol}://{host}:{port}") #, basic_auth=('elastic', password))
+    password = os.getenv('ELASTICSEARCH_PASSWORD')
+    if password:
+        return Elasticsearch(f"{protocol}://{host}:{port}"), basic_auth=('elastic', password))
+    else:
+        return Elasticsearch(f"{protocol}://{host}:{port}") #, basic_auth=('elastic', password))
 
 def index_definition(record, out):
     """Create index definition from record"""
