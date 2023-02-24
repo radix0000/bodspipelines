@@ -102,6 +102,13 @@ def repex_data_non_public():
             'ExceptionCategory': 'ULTIMATE_ACCOUNTING_CONSOLIDATION_PARENT',
             'ExceptionReason': 'NON_PUBLIC'}
 
+@pytest.fixture
+def repex_data_no_lei():
+    """Example NO_LEI Reporting Exception"""
+    return {'LEI': '213800QTG16IUUZ6WD32',
+            'ExceptionCategory': 'DIRECT_ACCOUNTING_CONSOLIDATION_PARENT',
+            'ExceptionReason': 'NO_LEI'}
+
 def test_lei_transform(lei_data):
     """Test transformation of LEI-CDF v3.1 data to BODS entity statement"""
     transform = Gleif2Bods()
