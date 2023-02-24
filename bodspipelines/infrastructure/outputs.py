@@ -7,7 +7,7 @@ from bodspipelines.infrastructure.clients.kinesis_client import KinesisStream
 class OutputConsole:
     name: str
 
-    def process(self, item):
+    def process(self, item, item_type):
         """Print item"""
         print(f"{self.name}: {item}")
 
@@ -26,7 +26,7 @@ class Output:
     name: str
     target: Union[OutputConsole]
 
-    def process(self, item):
+    def process(self, item, item_type):
         self.target.process(item)
 
 
@@ -48,7 +48,7 @@ class KinesisOutput:
         self.stream_name = stream_name
         self.stream = KinesisStream(self.stream_name)
 
-    def process(self, item):
+    def process(self, item, item_type):
         self.stream.add_record(item)
 
     def __del__(self):
