@@ -4,6 +4,7 @@ from bodspipelines.infrastructure.outputs import Output, OutputConsole, NewOutpu
 from bodspipelines.infrastructure.processing.bulk_data import BulkData
 from bodspipelines.infrastructure.processing.xml_data import XMLData
 from bodspipelines.transforms.gleif import Gleif2Bods
+from bodspipelines.mappings.gleif import lei_properties, rr_propertties, repex_properties
 
 # Defintion of LEI-CDF v3.1 XML date source
 lei2_source = Source(name="lei2",
@@ -34,7 +35,7 @@ repex_source = Source(name="repex",
 
 output_console = Output(name="console", target=OutputConsole(name="gleif-injest"))
 
-output_new = NewOutput(storage=ElasticStorage(indexes={"lei2": None, "rr": None, "repex": None}), 
+output_new = NewOutput(storage=ElasticStorage(indexes={"lei2": lei_properties, "rr": rr_propertties, "repex": repex_properties}), 
                        output=output_console) # KinesisOutput(stream_name="gleif_injest_stream"))
 
 # Definition of GLEIF data pipeline injest stage
