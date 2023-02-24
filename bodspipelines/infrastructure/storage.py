@@ -22,6 +22,9 @@ class ElasticStorage:
         for index_name in self.indexes:
             self.storage.create_index(index_name, self.indexes[index_name])
 
+    def list_indexes(self):
+        return self.storage.list_indexes()
+
     #def __post_init__(self):
     #    self.storage = ElasticsearchClient()
     #    self.setup_indexes()
