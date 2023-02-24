@@ -27,7 +27,7 @@ class Output:
     target: Union[OutputConsole]
 
     def process(self, item, item_type):
-        self.target.process(item)
+        self.target.process(item, item_type)
 
 
 class NewOutput:
