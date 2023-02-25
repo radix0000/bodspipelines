@@ -69,7 +69,7 @@ class ElasticsearchClient:
         return self.client.indices.get_alias(index="*")
 
     def get_mapping(self, index_name):
-        return self.client.indices.get_mapping(index_name)
+        return self.client.indices.get_mapping(index=index_name)
 
     def check_new(self, data):
         pass
