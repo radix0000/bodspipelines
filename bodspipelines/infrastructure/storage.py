@@ -25,6 +25,9 @@ class ElasticStorage:
     def list_indexes(self):
         return self.storage.list_indexes()
 
+    def list_index_details(self, index_name):
+        return self.storage.get_mapping(self, index_name)
+
     #def __post_init__(self):
     #    self.storage = ElasticsearchClient()
     #    self.setup_indexes()
