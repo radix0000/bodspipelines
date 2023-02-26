@@ -61,7 +61,7 @@ repex_properties = {'LEI': {'type': 'text'},
 def match_lei(item):
     return {"LEI": item["LEI"]}
 
-def match_rr(item)
+def match_rr(item):
     return {'Relationship': {'StartNode': {'NodeID': item['Relationship']['StartNode']['NodeID']}, 
                              'EndNode': {'NodeID': item['Relationship']['EndNode']['NodeID']},
                              'RelationshipType': item['Relationship']['RelationshipType']}
