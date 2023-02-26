@@ -61,6 +61,10 @@ class ElasticStorage:
             self.set_index(item_type)
         return self.add_item(item, item_type)
 
+    def query(self, index_name, query):
+        self.storage.set_index(index_name)
+        return self.storage.search({"match" : query})
+
 #storage = ElasticStorage(protocol='http', host='localhost', port='9200', password='fGSX0QA*8Ukn4lYQddu9', indexes=['lei','rr','repex'])
 
 #print(storage.process(item, item_type))
