@@ -57,3 +57,14 @@ rr_propertties = {'Relationship': {'type': 'object',
 repex_properties = {'LEI': {'type': 'text'}, 
                     'ExceptionCategory': {'type': 'text'}, 
                     'ExceptionReason': {'type': 'text'}}
+
+def match_lei(item):
+    return {"LEI": item["LEI"]}
+
+def match_rr(item)
+    return {'Relationship': {'StartNode': {'NodeID': item['Relationship']['StartNode']['NodeID']}, 
+                             'EndNode': {'NodeID': item['Relationship']['EndNode']['NodeID']},
+                             'RelationshipType': item['Relationship']['RelationshipType']}
+
+def match_repex(item):
+    return {'LEI': item["LEI"], 'ExceptionCategory': item["ExceptionCategory"], 'ExceptionReason': item["ExceptionReason"]}

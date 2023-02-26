@@ -20,7 +20,7 @@ class ElasticStorage:
 
     def setup_indexes(self):
         for index_name in self.indexes:
-            self.storage.create_index(index_name, self.indexes[index_name])
+            self.storage.create_index(index_name, self.indexes[index_name]['properties'])
 
     def list_indexes(self):
         return self.storage.list_indexes()
@@ -33,19 +33,23 @@ class ElasticStorage:
     #    self.setup_indexes()
 
     def set_index(self, index_name):
+        self.current_index = index_name
         self.storage.set_index(index_name)
 
     def delete_index(self, index_name):
+        self.current_index = index_name
         self.storage.set_index(index_name)
         self.storage.delete_index()
 
     def delete_all(self, index_name):
+        self.current_index = index_name
         self.storage.set_index(index_name)
         self.storage.delete_index()
         self.storage.create_index(index_name, self.indexes[index_name])
 
     def add_item(self, item, item_type):
-        query = {"match": {"LEI": {"query" : item["LEI"]}}}
+        #query = {"match": {"LEI": {"query" : item["LEI"]}}}
+        query = self.indexes[self.current_index]['match'](item)
         print(query)
         match = self.storage.search(query)
         print(match)
