@@ -35,6 +35,10 @@ class ElasticStorage:
     def set_index(self, index_name):
         self.storage.set_index(index_name)
 
+    def delete_index(self, index_name):
+        self.storage.set_index(index_name)
+        self.storage.delete_index()
+
     def delete_all(self, index_name):
         self.storage.set_index(index_name)
         self.storage.delete_index()
