@@ -62,9 +62,14 @@ def match_lei(item):
     return {"match": {"LEI": item["LEI"]}}
 
 def match_rr(item):
-    return {"match": {'Relationship': {'StartNode': {'NodeID': item['Relationship']['StartNode']['NodeID']}, 
-                             'EndNode': {'NodeID': item['Relationship']['EndNode']['NodeID']},
-                             'RelationshipType': item['Relationship']['RelationshipType']}}}
+    return {"bool": {"must": [{"match": {'Relationship': {'StartNode': {'NodeID': item['Relationship']['StartNode']['NodeID']}}}},
+                              {"match": {'Relationship': {'EndNode': {'NodeID': item['Relationship']['EndNode']['NodeID']}}}},
+                              {"match": {'Relationship': {'RelationshipType': item['Relationship']['RelationshipType']}}}]}}
+
+
+#{"match": {'Relationship': {'StartNode': {'NodeID': item['Relationship']['StartNode']['NodeID']}, 
+#                             'EndNode': {'NodeID': item['Relationship']['EndNode']['NodeID']},
+#                             'RelationshipType': item['Relationship']['RelationshipType']}}}
 
 def match_repex(item):
     return {"match": {'LEI': item["LEI"], 'ExceptionCategory': item["ExceptionCategory"], 'ExceptionReason': item["ExceptionReason"]}}
