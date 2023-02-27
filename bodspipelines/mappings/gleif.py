@@ -64,7 +64,7 @@ def match_lei(item):
 def match_rr(item):
     return {'Relationship': {'StartNode': {'NodeID': item['Relationship']['StartNode']['NodeID']}, 
                              'EndNode': {'NodeID': item['Relationship']['EndNode']['NodeID']},
-                             'RelationshipType': item['Relationship']['RelationshipType']}
+                             'RelationshipType': item['Relationship']['RelationshipType']}}}
 
 def match_repex(item):
     return {'LEI': item["LEI"], 'ExceptionCategory': item["ExceptionCategory"], 'ExceptionReason': item["ExceptionReason"]}
