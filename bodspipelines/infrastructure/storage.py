@@ -48,9 +48,10 @@ class ElasticStorage:
         self.storage.create_index(index_name, self.indexes[index_name])
 
     def add_item(self, item, item_type):
-        self.set_index(item_type)
+        #self.set_index(item_type)
         #query = {"match": {"LEI": {"query" : item["LEI"]}}}
-        query = self.indexes[self.current_index]['match'](item)
+        print(item_type, self.indexes[item_type])
+        query = self.indexes[item_type]['match'](item)
         print(query)
         match = self.storage.search(query)
         print(match)
