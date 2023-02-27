@@ -62,9 +62,9 @@ def match_lei(item):
     return {"match": {"LEI": item["LEI"]}}
 
 def match_rr(item):
-    return {"bool": {"must": [{"match": {'Relationship': {'StartNode': {'NodeID': item['Relationship']['StartNode']['NodeID']}}}},
-                              {"match": {'Relationship': {'EndNode': {'NodeID': item['Relationship']['EndNode']['NodeID']}}}},
-                              {"match": {'Relationship': {'RelationshipType': item['Relationship']['RelationshipType']}}}]}}
+    return {"bool": {"must": [{"match": {'Relationship.StartNode.NodeID': item['Relationship']['StartNode']['NodeID']}},
+                              {"match": {'Relationship.EndNode.NodeID': item['Relationship']['EndNode']['NodeID']}},
+                              {"match": {'Relationship.RelationshipType': item['Relationship']['RelationshipType']}}]}}
 
 
 #{"match": {'Relationship': {'StartNode': {'NodeID': item['Relationship']['StartNode']['NodeID']}, 
