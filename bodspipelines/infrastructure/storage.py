@@ -52,7 +52,7 @@ class ElasticStorage:
         #query = {"match": {"LEI": {"query" : item["LEI"]}}}
         print(item_type, self.indexes[item_type])
         query = self.indexes[item_type]['match'](item)
-        print(query)
+        print("Query:", query)
         match = self.storage.search(query)
         print(match)
         if not match['hits']['hits']:
