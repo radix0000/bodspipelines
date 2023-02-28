@@ -33,7 +33,7 @@ lei_properties = {'LEI': {'type': 'text'},
                                                                       'properties': {'ValidationAuthorityID': {'type': 'text'},
                                                                                      'ValidationAuthorityEntityID': {'type': 'text'}}}}}}
 
-rr_propertties = {'Relationship': {'type': 'object', 
+rr_properties = {'Relationship': {'type': 'object', 
                                    'properties': {'StartNode': {'type': 'object', 
                                                                 'properties': {'NodeID': {'type': 'text'}, 
                                                                                'NodeIDType': {'type': 'text'}}}, 
